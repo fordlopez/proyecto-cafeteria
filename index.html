@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Café Alma — Cafetería</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Estilos propios -->
+ 
+</head>
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top cafe-navbar" id="mainNavbar">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand cafe-logo" href="#inicio">
+        <i class="bi bi-cup-hot-fill me-2"></i>Café Alma
+      </a>
+
+      <!-- Toggler móvil -->
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Vínculos -->
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link cafe-nav-link" href="#inicio">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link cafe-nav-link" href="#menu">Menú</a></li>
+          <li class="nav-item"><a class="nav-link cafe-nav-link" href="#nosotros">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link cafe-nav-link" href="#contacto">Contacto</a></li>
+          <li class="nav-item ms-lg-3">
+            <a class="btn cafe-btn-pedido" href="#pedido">
+              <i class="bi bi-bag me-1"></i>Mi pedido
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- ===================== FIN NAVBAR ===================== -->
+
+
+  <!-- ===================== HERO ===================== -->
+  <section class="cafe-hero d-flex align-items-center" id="inicio">
+    <div class="cafe-hero-overlay"></div>
+    <div class="container position-relative z-1 text-center text-lg-start">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <p class="cafe-hero-eyebrow">Desde 2010, Guatemala City</p>
+          <h1 class="cafe-hero-title">El café que<br/><em>despierta tu día</em></h1>
+          <p class="cafe-hero-sub">Granos de origen, tostados en casa, servidos con calma.</p>
+          <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start mt-4">
+            <a href="#menu" class="btn cafe-btn-primary">Ver menú</a>
+            <a href="#pedido" class="btn cafe-btn-outline">Ordenar ahora</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ===================== FIN HERO ===================== -->
+
+
+  <!-- ===================== SECCIÓN MENÚ ===================== -->
+  <section class="cafe-section" id="menu">
+    <div class="container">
+
+      <!-- Encabezado -->
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-6 text-center">
+          <p class="cafe-section-eyebrow">Lo que ofrecemos</p>
+          <h2 class="cafe-section-title">Nuestro Menú</h2>
+          <p class="cafe-section-sub">Ingredientes frescos, recetas con carácter, precios honestos.</p>
+        </div>
+      </div>
+
+      <!-- Buscador -->
+      <div class="row justify-content-center mb-3">
+        <div class="col-lg-5 col-md-7">
+          <div class="cafe-search-wrap">
+            <i class="bi bi-search cafe-search-icon"></i>
+            <input
+              type="text"
+              id="buscadorProductos"
+              class="form-control cafe-search-input"
+              placeholder="Buscar producto…"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Filtros de categoría -->
+      <div class="row justify-content-center mb-5">
+        <div class="col-auto">
+          <div class="cafe-filters d-flex flex-wrap gap-2 justify-content-center" id="filtrosCategorias">
+            <button  class="botonMenu btn cafe-filter-btn active" data-categoria="todas">Todas</button>
+            <button  class="botonMenu btn cafe-filter-btn" data-categoria="Bebida caliente" >Bebidas calientes</button>
+            <button  class="botonMenu btn cafe-filter-btn" data-categoria="Bebida fría">Bebidas frías</button>
+            <button class="botonMenu btn cafe-filter-btn" data-categoria="Postre">Postres</button>
+            <button class="botonMenu btn cafe-filter-btn" data-categoria="Comida">Comida</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de productos -->
+      <div class="row g-4" id="gridProductos">
+
+        <!-- ── PRODUCTO 1 ── -->
+        <div class="col-sm-6 col-lg-4 col-xl-3 producto-card-wrap" data-categoria="Bebida caliente" data-nombre="Café Americano">
+          <div class="cafe-product-card h-100">
+            <div class="cafe-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80" alt="Café Americano" class="cafe-product-img" />
+              <span class="cafe-product-badge">Bebida caliente</span>
+            </div>
+            <div class="cafe-product-body">
+              <h5 class="cafe-product-name">Café Americano</h5>
+              <p class="cafe-product-desc">Café negro tradicional, intenso y puro.</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
+                <span class="cafe-product-price">Q12.00</span>
+                <button
+                  class="btn cafe-btn-agregar btn-agregar-producto boton-pedir"
+               
+                >Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PRODUCTO 2 ── -->
+        <div class="col-sm-6 col-lg-4 col-xl-3 producto-card-wrap" data-categoria="Bebida caliente" data-nombre="Café Latte">
+          <div class="cafe-product-card h-100">
+            <div class="cafe-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1561047029-3000c68339ca?w=400&q=80" alt="Café Latte" class="cafe-product-img" />
+              <span class="cafe-product-badge">Bebida caliente</span>
+            </div>
+            <div class="cafe-product-body">
+              <h5 class="cafe-product-name">Café Latte</h5>
+              <p class="cafe-product-desc">Café con leche espumada, suave y cremoso.</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
+                <span class="cafe-product-price">Q18.00</span>
+                <button
+                  class="btn cafe-btn-agregar btn-agregar-producto boton-pedir"
+             
+                >Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PRODUCTO 3 ── -->
+        <div class="col-sm-6 col-lg-4 col-xl-3 producto-card-wrap" data-categoria="Bebida fría" data-nombre="Frappe de Chocolate">
+          <div class="cafe-product-card h-100">
+            <div class="cafe-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&q=80" alt="Frappe de Chocolate" class="cafe-product-img" />
+              <span class="cafe-product-badge bebida-fria">Bebida fría</span>
+            </div>
+            <div class="cafe-product-body">
+              <h5 class="cafe-product-name">Frappe de Chocolate</h5>
+              <p class="cafe-product-desc">Bebida fría con chocolate y crema batida.</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
+                <span class="cafe-product-price">Q25.00</span>
+                <button
+                  class="btn cafe-btn-agregar btn-agregar-producto boton-pedir"
+                  data-nombre="Frappe de Chocolate"
+                  data-precio="25"
+                  data-categoria="Bebida fría"
+                  data-descripcion="Bebida fría con chocolate y crema batida."
+                >Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PRODUCTO 4 ── -->
+        <div class="col-sm-6 col-lg-4 col-xl-3 producto-card-wrap" data-categoria="Bebida fría" data-nombre="Smoothie de Fresa">
+          <div class="cafe-product-card h-100">
+            <div class="cafe-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400&q=80" alt="Smoothie de Fresa" class="cafe-product-img" />
+              <span class="cafe-product-badge bebida-fria">Bebida fría</span>
+            </div>
+            <div class="cafe-product-body">
+              <h5 class="cafe-product-name">Smoothie de Fresa</h5>
+              <p class="cafe-product-desc">Batido natural de fresa, sin azúcar añadida.</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
+                <span class="cafe-product-price">Q22.00</span>
+                <button
+                  class="btn cafe-btn-agregar btn-agregar-producto boton-pedir"
+                  data-nombre="Smoothie de Fresa"
+                  data-precio="22"
+                  data-categoria="Bebida fría"
+                  data-descripcion="Batido natural de fresa, sin azúcar añadida."
+                >Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PRODUCTO 5 ── -->
+        <div class="col-sm-6 col-lg-4 col-xl-3 producto-card-wrap" data-categoria="Postre" data-nombre="Muffin de Vainilla">
+          <div class="cafe-product-card h-100">
+            <div class="cafe-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=400&q=80" alt="Muffin de Vainilla" class="cafe-product-img" />
+              <span class="cafe-product-badge postre">Postre</span>
+            </div>
+            <div class="cafe-product-body">
+              <h5 class="cafe-product-name">Muffin de Vainilla</h5>
+              <p class="cafe-product-desc">Pan dulce suave con esencia de vainilla.</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
+                <span class="cafe-product-price">Q15.00</span>
+                <button
+                  class="btn cafe-btn-agregar btn-agregar-producto boton-pedir"
+                  data-nombre="Muffin de Vainilla"
+                  data-precio="15"
+                  data-categoria="Postre"
+                  data-descripcion="Pan dulce suave con esencia de vainilla."
+                >Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PRODUCTO 6 ── -->
+        <div class="col-sm-6 col-lg-4 col-xl-3 producto-card-wrap" data-categoria="Postre" data-nombre="Cheesecake">
+          <div class="cafe-product-card h-100">
+            <div class="cafe-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&q=80" alt="Cheesecake" class="cafe-product-img" />
+              <span class="cafe-product-badge postre">Postre</span>
+            </div>
+            <div class="cafe-product-body">
+              <h5 class="cafe-product-name">Cheesecake</h5>
+              <p class="cafe-product-desc">Pastel de queso cremoso con base de galleta.</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
+                <span class="cafe-product-price">Q28.00</span>
+                <button
+                  class="btn cafe-btn-agregar btn-agregar-producto boton-pedir"
+              
+                >Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PRODUCTO 7 ── -->
+        <div class="col-sm-6 col-lg-4 col-xl-3 producto-card-wrap" data-categoria="Comida" data-nombre="Sándwich de Pavo">
+          <div class="cafe-product-card h-100">
+            <div class="cafe-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80" alt="Sándwich de Pavo" class="cafe-product-img" />
+              <span class="cafe-product-badge comida">Comida</span>
+            </div>
+            <div class="cafe-product-body">
+              <h5 class="cafe-product-name">Sándwich de Pavo</h5>
+              <p class="cafe-product-desc">Pan artesanal con pavo ahumado y vegetales.</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
+                <span class="cafe-product-price">Q32.00</span>
+                <button
+                  class="btn cafe-btn-agregar btn-agregar-producto boton-pedir"
+                 
+                >Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── PRODUCTO 8 ── -->
+        <div class="col-sm-6 col-lg-4 col-xl-3 producto-card-wrap" data-categoria="Comida" data-nombre="Bowl de Granola">
+          <div class="cafe-product-card h-100">
+            <div class="cafe-product-img-wrap">
+              <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80" alt="Bowl de Granola" class="cafe-product-img" />
+              <span class="cafe-product-badge comida">Comida</span>
+            </div>
+            <div class="cafe-product-body">
+              <h5 class="cafe-product-name">Bowl de Granola</h5>
+              <p class="cafe-product-desc">Granola artesanal con frutas frescas y miel.</p>
+              <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
+                <span class="cafe-product-price">Q20.00</span>
+                <button
+                  class="btn cafe-btn-agregar btn-agregar-producto boton-pedir"
+            
+                >Agregar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /gridProductos -->
+
+      <!-- Mensaje sin resultados (oculto por defecto, JS lo mostrará) -->
+      <div id="sinResultados" class="text-center py-5 d-none">
+        <i class="bi bi-search fs-1 text-muted"></i>
+        <p class="mt-3 cafe-section-sub">No se encontraron productos.</p>
+      </div>
+
+    </div>
+  </section>
+  <!-- ===================== FIN MENÚ ===================== -->
+
+
+  <!-- ===================== SECCIÓN PEDIDO ===================== -->
+  <section class="cafe-section cafe-section-beige" id="pedido">
+    <div class="container">
+
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-6 text-center">
+          <p class="cafe-section-eyebrow">Tu selección</p>
+          <h2 class="cafe-section-title">Mi Pedido</h2>
+        </div>
+      </div>
+
+      <div class="row g-4 align-items-start">
+
+        <!-- Lista del pedido -->
+        <div class="col-lg-7">
+          <div class="cafe-order-box">
+
+            <!-- Estado vacío -->
+        <!--     <div id="pedidoVacio" class="cafe-order-empty text-center py-5">
+              <i class="bi bi-bag-x fs-1 cafe-icon-muted"></i>
+              <p class="mt-3 cafe-text-muted">Aún no has agregado productos.</p>
+              <a href="#menu" class="btn cafe-btn-outline mt-2">Ver menú</a>
+            </div> -->
+
+            <!-- Items del pedido (JS los inyecta dentro de esta lista) -->
+            <ul class="list-unstyled mb-0" id="listaPedido">
+              Ejemplo de estructura de ítem — lo genera el JS:
+              <li class="cafe-order-item" data-nombre="Café Latte">
+                <div class="cafe-order-item-info">
+                  <span class="cafe-order-item-name">Café Latte</span>
+                  <span class="cafe-order-item-unit">Q18.00 c/u</span>
+                </div>
+                <div class="cafe-order-item-controls d-flex align-items-center gap-2">
+                  <button class="btn cafe-btn-qty" data-accion="restar" data-nombre="Café Latte">−</button>
+                  <span class="cafe-order-qty">2</span>
+                  <button class="btn cafe-btn-qty" data-accion="sumar" data-nombre="Café Latte">+</button>
+                  <span class="cafe-order-subtotal ms-2">Q36.00</span>
+                  <button class="btn cafe-btn-eliminar ms-2" data-accion="eliminar" data-nombre="Café Latte">
+                    <i class="bi bi-trash3"></i>
+                  </button>
+                </div>
+              </li>
+              
+            </ul>
+
+          </div>
+        </div>
+
+        <!-- Totales + finalizar -->
+        <div class="col-lg-5">
+          <div class="cafe-totals-box">
+            <h5 class="cafe-totals-title">Resumen</h5>
+            <div class="cafe-totals-row">
+              <span>Subtotal</span>
+              <span id="totalSubtotal">Q0.00</span>
+            </div>
+            <div class="cafe-totals-row">
+              <span>Impuesto (5%)</span>
+              <span id="totalImpuesto">Q0.00</span>
+            </div>
+            <div class="cafe-totals-row cafe-totals-total">
+              <span>Total</span>
+              <span id="totalFinal">Q0.00</span>
+            </div>
+
+            <button id="btnFinalizar" class="btn cafe-btn-primary w-100 mt-4">
+              <i class="bi bi-check2-circle me-2"></i>Finalizar pedido
+            </button>
+            <button id="btnVaciar" class="btn cafe-btn-ghost w-100 mt-2">
+              <i class="bi bi-x-circle me-1"></i>Vaciar pedido
+            </button>
+          </div>
+
+          <!-- Confirmación final (JS la muestra) -->
+          <div id="confirmacionFinal" class="cafe-confirmation d-none mt-4">
+            <div class="cafe-confirmation-header">
+              <i class="bi bi-check-circle-fill me-2"></i>Pedido Finalizado
+            </div>
+            <div class="cafe-confirmation-body" id="confirmacionContenido">
+              <!-- JS inyecta el detalle aquí -->
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /row -->
+
+    </div>
+  </section>
+  <!-- ===================== FIN PEDIDO ===================== -->
+
+
+  <!-- ===================== NOSOTROS ===================== -->
+  <section class="cafe-section" id="nosotros">
+    <div class="container">
+      <div class="row align-items-center g-5">
+
+        <div class="col-lg-6 order-lg-2">
+          <img
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80"
+            alt="Interior de Café Alma"
+            class="cafe-about-img img-fluid"
+          />
+        </div>
+
+        <div class="col-lg-6 order-lg-1">
+          <p class="cafe-section-eyebrow">Nuestra historia</p>
+          <h2 class="cafe-section-title">Sobre Nosotros</h2>
+          <p class="cafe-about-text">
+            Café Alma nació en 2010 en el corazón de Guatemala City con una sola idea: que cada taza cuente algo. Trabajamos directamente con productores locales, seleccionando granos de Huehuetenango y Antigua para traer sabores únicos a tu mesa.
+          </p>
+          <p class="cafe-about-text">
+            Nuestro espacio está diseñado para que te quedes: luz natural, música suave y el aroma persistente de tueste fresco. Si vienes a trabajar, a conversar o simplemente a descansar, aquí siempre habrá una silla para ti.
+          </p>
+          <div class="row g-3 mt-3">
+            <div class="col-4 text-center">
+              <div class="cafe-stat-num">14+</div>
+              <div class="cafe-stat-label">años de trayectoria</div>
+            </div>
+            <div class="col-4 text-center">
+              <div class="cafe-stat-num">8</div>
+              <div class="cafe-stat-label">orígenes de café</div>
+            </div>
+            <div class="col-4 text-center">
+              <div class="cafe-stat-num">200+</div>
+              <div class="cafe-stat-label">clientes al día</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- ===================== FIN NOSOTROS ===================== -->
+
+
+  <!-- ===================== CONTACTO ===================== -->
+  <section class="cafe-section cafe-section-beige" id="contacto">
+    <div class="container">
+
+      <div class="row justify-content-center mb-5">
+        <div class="col-lg-6 text-center">
+          <p class="cafe-section-eyebrow">Estamos aquí</p>
+          <h2 class="cafe-section-title">Contacto</h2>
+          <p class="cafe-section-sub">¿Tienes preguntas o quieres reservar una mesa? Escríbenos.</p>
+        </div>
+      </div>
+
+      <div class="row g-5 align-items-start">
+
+        <!-- Info -->
+        <div class="col-lg-4">
+          <ul class="list-unstyled cafe-contact-list">
+            <li>
+              <i class="bi bi-geo-alt cafe-contact-icon"></i>
+              <div>
+                <strong>Dirección</strong>
+                <p>6a Avenida 12-31, Zona 1<br/>Guatemala City, Guatemala</p>
+              </div>
+            </li>
+            <li>
+              <i class="bi bi-telephone cafe-contact-icon"></i>
+              <div>
+                <strong>Teléfono</strong>
+                <p>+502 2222-3333</p>
+              </div>
+            </li>
+            <li>
+              <i class="bi bi-envelope cafe-contact-icon"></i>
+              <div>
+                <strong>Correo</strong>
+                <p>hola@cafealma.gt</p>
+              </div>
+            </li>
+            <li>
+              <i class="bi bi-clock cafe-contact-icon"></i>
+              <div>
+                <strong>Horario</strong>
+                <p>Lun – Vie: 7:00 – 20:00<br/>Sáb – Dom: 8:00 – 18:00</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Formulario -->
+        <div class="col-lg-8">
+          <div class="cafe-form-box">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="contactNombre" class="cafe-label">Nombre</label>
+                <input type="text" id="contactNombre" class="form-control cafe-input" placeholder="Tu nombre" />
+              </div>
+              <div class="col-md-6">
+                <label for="contactEmail" class="cafe-label">Correo electrónico</label>
+                <input type="email" id="contactEmail" class="form-control cafe-input" placeholder="tu@correo.com" />
+              </div>
+              <div class="col-12">
+                <label for="contactMensaje" class="cafe-label">Mensaje</label>
+                <textarea id="contactMensaje" class="form-control cafe-input" rows="5" placeholder="¿En qué podemos ayudarte?"></textarea>
+              </div>
+              <div class="col-12">
+                <button type="button" class="btn cafe-btn-primary">Enviar mensaje</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- ===================== FIN CONTACTO ===================== -->
+
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="cafe-footer">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+
+        <!-- Brand -->
+        <div class="col-lg-4">
+          <a href="#inicio" class="cafe-footer-logo">
+            <i class="bi bi-cup-hot-fill me-2"></i>Café Alma
+          </a>
+          <p class="cafe-footer-text mt-3">
+            Granos de origen, tostados en casa. Una taza pensada para ti, cada mañana.
+          </p>
+        </div>
+
+        <!-- Vínculos rápidos -->
+        <div class="col-sm-6 col-lg-2 offset-lg-1">
+          <h6 class="cafe-footer-heading">Navegación</h6>
+          <ul class="list-unstyled cafe-footer-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#menu">Menú</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Categorías -->
+        <div class="col-sm-6 col-lg-2">
+          <h6 class="cafe-footer-heading">Categorías</h6>
+          <ul class="list-unstyled cafe-footer-links">
+            <li><a href="#menu">Bebidas calientes</a></li>
+            <li><a href="#menu">Bebidas frías</a></li>
+            <li><a href="#menu">Postres</a></li>
+            <li><a href="#menu">Comida</a></li>
+          </ul>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="col-lg-3">
+          <h6 class="cafe-footer-heading">Síguenos</h6>
+          <div class="d-flex gap-3 mt-2">
+            <a href="#" class="cafe-social-btn" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="cafe-social-btn" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="cafe-social-btn" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+            <a href="#" class="cafe-social-btn" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="cafe-footer-hr" />
+
+      <div class="row">
+        <div class="col text-center">
+          <p class="cafe-footer-copy">© 2026 Café Alma — Guatemala City. Todos los derechos reservados.</p>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+  <!-- ===================== FIN FOOTER ===================== -->
+
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Tu JavaScript va aquí -->
+  <script src="./index.js"></script> 
+
+</body>
+</html>
