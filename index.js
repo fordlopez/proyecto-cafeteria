@@ -1,13 +1,17 @@
 class Pedidos {
     #nombre;
     #total;
+    #precio;
     #cantida;
+    #id;
 
 
-    constructor(nombre, total, cantida) {
+    constructor(nombre, total, id) {
         this.nombre = nombre
         this.#total = total
+        this.#precio = total
         this.#cantida = 1
+        this.#id = id
 
 
     }
@@ -27,11 +31,25 @@ class Pedidos {
     set cantida(value) {
         this.#cantida = value
     }
+    get id() {
+        return this.#id
+    }
+    set id(value) {
+        this.#id = value
+    }
 
     sumarProductos() {
-
+        this.cantida++;
+        this.total += this.#precio;
+    }
+    restarProductos() {
+        if (this.cantida > 1) {
+            this.cantida--;
+            this.total -= this.#precio;
+        }
     }
     sumaTotal() {
+        this.total = this.total + this.total
 
     }
     impuestosSuma() {
@@ -41,6 +59,10 @@ class Pedidos {
 }
 ///////variables//////////////////////////////////////////////////////////////////////////////////
 let inputBuncador = document.querySelector('#buscadorProductos')
+let pedidoVacio = document.querySelector("#pedidoVacio")
+let listaPedido = document.querySelector("#listaPedido")
+
+
 let PedidosTemporales = []
 let ObjetosPedidos = []
 
@@ -149,12 +171,29 @@ function menu() {
 
 
 }
+let html2 = ""
+function PedidosLista() {
+    html2 = ""
+    ObjetosPedidos.forEach(item => {
+        html2 += `  <li class="cafe-order-item" data-nombre="Café Latte">
+                <div class="cafe-order-item-info">
+                  <span class="cafe-order-item-name">${item.nombre}</span>
+                </div>
+                <div class="cafe-order-item-controls d-flex align-items-center gap-2">
+                  <button class="btn cafe-btn-qty" data-accion="restar"  data-id="${item.id}">−</button>
+                  <span class="cafe-order-qty">${item.cantida}</span>
+                  <button class="btn cafe-btn-qty" data-accion="sumar"  data-id="${item.id}">+</button>
+                  <span class="cafe-order-subtotal ms-2">Q${item.total}</span>
+                  <button class="btn cafe-btn-eliminar ms-2" data-accion="eliminar" data-id="${item.id}">Eliminar</i></button>
+                </div>
+              </li>  `
 
+    })
+    listaPedido.innerHTML = html2
+}
 let menuFiltro = prodoctos
 menu()
 let botonpedir = document.querySelectorAll(".boton-pedir")
-
-
 
 //////eventos////////////////////////////////////////
 inputBuncador.addEventListener("keyup", (event) => {
@@ -206,17 +245,54 @@ gridProductos.addEventListener("click", (event) => {
 
     let id = Number(event.target.dataset.id);
 
-    let producto = prodoctos.find(item => item.id === id);
+    let producto = prodoctos.find(item => item.id == id);
 
     console.log("ID:", id);
 
+
     let pedidoTemporal = new Pedidos(
         producto.nombre,
-        producto.precio
+        producto.precio,
+        producto.id
     );
-
     ObjetosPedidos.push(pedidoTemporal);
 
     console.log(ObjetosPedidos);
+    PedidosLista()
+    /* 
+        if (!ObjetosPedidos.includes(prodoctos.nombre)) {
+    
+    
+        } else {
+            ObjetosPedidos.push(pedidoTemporal);
+    
+    
+        } */
 
+});
+listaPedido.addEventListener("click", (event) => {
+
+    let id = Number(event.target.dataset.id);
+
+    let pedido = ObjetosPedidos.find(item => item.id == id);
+
+    if (!pedido) return;
+
+    if (event.target.dataset.accion == "sumar") {
+        pedido.sumarProductos();
+    }
+
+    else if (event.target.dataset.accion == "restar") {
+        pedido.restarProductos();
+    } else if (event.target.dataset.accion == "eliminar") {
+        ObjetosPedidos = ObjetosPedidos.filter(
+            item => item.id !== id
+
+        )
+        console.log("mi mama me mima")
+    }
+
+
+    console.log(pedido);
+    PedidosLista()
 });
