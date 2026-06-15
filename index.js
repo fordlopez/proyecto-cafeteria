@@ -4,16 +4,12 @@ class Pedidos {
     #precio;
     #cantida;
     #id;
-
-
     constructor(nombre, total, id) {
         this.nombre = nombre
         this.#total = total
         this.#precio = total
         this.#cantida = 1
         this.#id = id
-
-
     }
     get nombre() {
         return this.#nombre
@@ -52,15 +48,21 @@ class Pedidos {
         this.total = this.total + this.total
 
     }
-    impuestosSuma() {
 
-    }
 
 }
 ///////variables//////////////////////////////////////////////////////////////////////////////////
 let inputBuncador = document.querySelector('#buscadorProductos')
 let pedidoVacio = document.querySelector("#pedidoVacio")
 let listaPedido = document.querySelector("#listaPedido")
+let textoDeTotal=document.querySelector("#textoDeTotal")
+let pediGracias=document.querySelector("#pediGracias")
+let Subtotal =0
+
+let totalSubtotal=document.querySelector("#totalSubtotal")
+let totalImpuesto =document.querySelector("#totalImpuesto")
+let totalFinal=document.querySelector("#totalFinal")
+
 
 
 let PedidosTemporales = []
@@ -68,6 +70,8 @@ let ObjetosPedidos = []
 
 ///////botones////////////////
 let botonMenu = document.querySelectorAll(".botonMenu")
+let botonFinalisar=document.querySelector("#btnFinalizar")
+let botonVaciar=document.querySelector("#btnVaciar")
 
 
 ///////   const de lista de menu
@@ -191,9 +195,37 @@ function PedidosLista() {
     })
     listaPedido.innerHTML = html2
 }
+
+function total(){
+Subtotal =0
+ ObjetosPedidos.map(item=> Subtotal =Subtotal +item.total)
+
+totalSubtotal.textContent=` Q ${Subtotal }`
+let Impuesto=Subtotal*0.05
+let finalTotal=Impuesto+Subtotal
+textoDeTotal.textContent=`Su total Q ${finalTotal}`
+
+
+totalImpuesto.textContent=`Q ${Impuesto}`
+
+
+totalFinal.textContent=`Q ${finalTotal}`
+let html3=''
+html3=''
+ObjetosPedidos.forEach(item=>{
+html3+=`<p class="mt-3 cafe-text-muted" > ${item.nombre}   X${item.cantida} = Q ${item.total}</p>`
+
+})
+resivo.innerHTML=html3
+
+}
+
+
 let menuFiltro = prodoctos
 menu()
 let botonpedir = document.querySelectorAll(".boton-pedir")
+
+
 
 //////eventos////////////////////////////////////////
 inputBuncador.addEventListener("keyup", (event) => {
@@ -233,6 +265,7 @@ botonMenu.forEach(btn => {
         }
 
     })
+   
 
 }
 
@@ -241,58 +274,96 @@ botonMenu.forEach(btn => {
 
 gridProductos.addEventListener("click", (event) => {
 
-    if (!event.target.classList.contains("boton-pedir")) return;
+     pedidoVacio.classList.add("d-none")
+ pediGracias.classList.add("d-none")
+  listaPedido.classList.remove("d-none")
 
+
+ 
     let id = Number(event.target.dataset.id);
 
     let producto = prodoctos.find(item => item.id == id);
 
-    console.log("ID:", id);
+    ObjetosPedidos.forEach(item=>{
+
+    if(item.nombre==producto.nombre){
+    
+
+    
+  }
+
+    })
 
 
-    let pedidoTemporal = new Pedidos(
+        let pedidoTemporal = new Pedidos(
         producto.nombre,
         producto.precio,
         producto.id
     );
     ObjetosPedidos.push(pedidoTemporal);
 
-    console.log(ObjetosPedidos);
-    PedidosLista()
-    /* 
-        if (!ObjetosPedidos.includes(prodoctos.nombre)) {
+   PedidosLista()
+    total()
     
-    
-        } else {
-            ObjetosPedidos.push(pedidoTemporal);
-    
-    
-        } */
 
 });
+
 listaPedido.addEventListener("click", (event) => {
 
     let id = Number(event.target.dataset.id);
 
     let pedido = ObjetosPedidos.find(item => item.id == id);
 
-    if (!pedido) return;
-
     if (event.target.dataset.accion == "sumar") {
         pedido.sumarProductos();
+       
     }
-
     else if (event.target.dataset.accion == "restar") {
         pedido.restarProductos();
+       
     } else if (event.target.dataset.accion == "eliminar") {
         ObjetosPedidos = ObjetosPedidos.filter(
             item => item.id !== id
+            
 
         )
-        console.log("mi mama me mima")
+    if(ObjetosPedidos.length==0){
+listaPedido.classList.add("d-none")
+pedidoVacio.classList.remove("d-none")
+
+console.log('el pepe')
+  
+}
+        
     }
+  PedidosLista()
+     total()
 
 
-    console.log(pedido);
-    PedidosLista()
+  
 });
+
+botonFinalisar.addEventListener("click",(event)=>{
+if(ObjetosPedidos.length>0){
+    pediGracias.classList.remove("d-none")
+   ObjetosPedidos=[]
+
+   listaPedido.classList.add("d-none")
+}
+})
+
+
+
+
+botonVaciar.addEventListener("click",()=>{
+    if (pediGracias.classList.contains('d-none')){
+
+    
+    pedidoVacio.classList.remove("d-none")
+     listaPedido.classList.add("d-none")
+     ObjetosPedidos=[]
+
+}
+})
+
+

@@ -1,5 +1,50 @@
-#listaPedido {
-    max-height: 300px;
-    overflow-y: auto;
-    width: 500px;
+
+
+/* .cafe-section {
+    height: 1000px;
+} */
+
+.container{
+  /* border: 1px solid black; */
+ 
+}
+.col-lg-7{
+
+    width: 40rem;
+}
+
+
+.ooooooo{
+    
+     font-size: 1.3rem;
+     justify-content: center;
+}
+#pedido{
+    
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      height: 50rem;
+
+}
+.cafe-icon-muted{
+    font-size: 5rem;
+}
+/* body{
+    background-color: black;
+    color: aliceblue;
+}
+
+button {
+    color: aliceblue;
+    background-color: aliceblue;
+} */
+
+#navMenu{
+   
+}
+
+#botonesFinalisar{
+    font-size: 1rem;
 }
