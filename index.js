@@ -276,7 +276,7 @@ listaPedido.addEventListener("click", (event) => {
 
     let pedido = ObjetosPedidos.find(item => item.id == id);
 
-    if (!pedido) return;
+
 
     if (event.target.dataset.accion == "sumar") {
         pedido.sumarProductos();
