@@ -4,16 +4,12 @@ class Pedidos {
     #precio;
     #cantida;
     #id;
-
-
     constructor(nombre, total, id) {
         this.nombre = nombre
         this.#total = total
         this.#precio = total
         this.#cantida = 1
         this.#id = id
-
-
     }
     get nombre() {
         return this.#nombre
@@ -52,15 +48,76 @@ class Pedidos {
         this.total = this.total + this.total
 
     }
-    impuestosSuma() {
 
+
+}
+
+class PodoctosCafétia {
+    #id;
+    #imagen;
+    #nombre;
+    #precio;
+    #categoria;
+    #descripcion;
+
+    constructor(id, imagen, nombre, precio, categoria, descripcion) {
+        this.#id = id
+        this.#imagen = imagen
+        this.#nombre = nombre
+        this.#precio = precio
+        this.#categoria = categoria
+        this.#descripcion = descripcion
     }
+    get id() {
+        return this.#id
+    }
+    set id(value) {
+        this.#id = value
+    }
+    get imagen() {
+        return this.#imagen
+    }
+    set imagen(value) {
+        this.#imagen = value
 
+    } get nombre() {
+        return this.#nombre
+    }
+    set nombre(value) {
+        this.#nombre
+    }
+    get precio() {
+        return this.#precio
+    }
+    set precio(value) {
+        this.#precio
+    }
+    get categoria() {
+        return this.#categoria
+    }
+    set categoria(value) {
+        this.#categoria
+    }
+    get descripcion() {
+        return this.#descripcion
+    }
+    set descripcion(value) {
+        this.#descripcion
+    }
 }
 ///////variables//////////////////////////////////////////////////////////////////////////////////
 let inputBuncador = document.querySelector('#buscadorProductos')
 let pedidoVacio = document.querySelector("#pedidoVacio")
 let listaPedido = document.querySelector("#listaPedido")
+let textoDeTotal = document.querySelector("#textoDeTotal")
+let pediGracias = document.querySelector("#pediGracias")
+let textoInpuesto = document.querySelector("#textoInpuesto")
+let Subtotal = 0
+
+let totalSubtotal = document.querySelector("#totalSubtotal")
+let totalImpuesto = document.querySelector("#totalImpuesto")
+let totalFinal = document.querySelector("#totalFinal")
+
 
 
 let PedidosTemporales = []
@@ -68,75 +125,22 @@ let ObjetosPedidos = []
 
 ///////botones////////////////
 let botonMenu = document.querySelectorAll(".botonMenu")
+let botonFinalisar = document.querySelector("#btnFinalizar")
+let botonVaciar = document.querySelector("#btnVaciar")
 
 
 ///////   const de lista de menu
-const prodoctos = [
-    {
-        id: 1,
-        imagen: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80",
-        nombre: "Café Americano",
-        precio: 12.00,
-        categoria: "Bebida caliente",
-        descripcion: "Café negro tradicional"
-    },
-    {
-        id: 2,
-        imagen: "https://images.unsplash.com/photo-1561047029-3000c68339ca?w=400&q=80",
-        nombre: "Café Latte",
-        precio: 18.00,
-        categoria: "Bebida caliente",
-        descripcion: "Café con leche espumada, suave y cremoso."
-    },
-    {
-        id: 3,
-        imagen: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&q=80",
-        nombre: "Frappe de Chocolate",
-        precio: 25.00,
-        categoria: "Bebida fría",
-        descripcion: "Bebida fría con chocolate y crema batida."
-    },
-    {
-        id: 4,
-        imagen: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400&q=80",
-        nombre: "Smoothie de Fresa",
-        precio: 22.00,
-        categoria: "Bebida fría",
-        descripcion: "Batido natural de fresa, sin azúcar añadida."
-    },
-    {
-        id: 5,
-        imagen: "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=400&q=80",
-        nombre: "Muffin de Vainilla",
-        precio: 15.00,
-        categoria: "Postre",
-        descripcion: "Pan dulce suave de vainilla"
-    },
-    {
-        id: 6,
-        imagen: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&q=80",
-        nombre: "Cheesecake",
-        precio: 28.00,
-        categoria: "Postre",
-        descripcion: "Pastel de queso cremoso con base de galleta."
-    },
-    {
-        id: 7,
-        imagen: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80",
-        nombre: "Sandwich de Pollo",
-        precio: 32.00,
-        categoria: "Comida",
-        descripcion: "Pan artesanal con pavo ahumado y vegetales."
-    },
-    {
-        id: 8,
-        imagen: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80",
-        nombre: "Bowl de Granola",
-        precio: 20.00,
-        categoria: "Comida",
-        descripcion: "Granola artesanal con frutas frescas y miel."
-    }
-]
+
+let prodocto1 = new PodoctosCafétia(1, "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80", "Café Americano", 12.00, "Bebida caliente", "Café Americano",)
+let prodocto2 = new PodoctosCafétia(2, "https://images.unsplash.com/photo-1561047029-3000c68339ca?w=400&q=80", "Café Latte", 18.00, "Bebida caliente", "Café con leche espumada, suave y cremoso.")
+let prodocto3 = new PodoctosCafétia(3, "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&q=80", "Frappe de Chocolate", 25.00, "Bebida fría", "Bebida fría con chocolate y crema batida.")
+let prodocto4 = new PodoctosCafétia(4, "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400&q=80", "Smoothie de Fresa", 22.00, "Bebida fría", "Batido natural de fresa, sin azúcar añadida.")
+let prodocto5 = new PodoctosCafétia(5, "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=400&q=80", "Muffin de Vainilla", 15.00, "Postre", "Pan dulce suave de vainilla")
+let prodocto6 = new PodoctosCafétia(6, "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&q=80", "Cheesecake", 28.00, "Postre", "Pastel de queso cremoso con base de galleta.")
+let prodocto7 = new PodoctosCafétia(7, "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80", "Sandwich de Pollo", 32.00, "Comida", "Pan artesanal con pavo ahumado y vegetales.")
+let prodocto8 = new PodoctosCafétia(8, "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80", "Bowl de Granola", 20.00, "Comida", "Granola artesanal con frutas frescas y miel.")
+
+const prodoctos = [prodocto1, prodocto2, prodocto3, prodocto4, prodocto5, prodocto6, prodocto7, prodocto8]
 let html = ""
 ////funciones/////////////////////////////////////////////////////////////////////
 function menu() {
@@ -175,7 +179,7 @@ let html2 = ""
 function PedidosLista() {
     html2 = ""
     ObjetosPedidos.forEach(item => {
-        html2 += `  <li class="cafe-order-item" data-nombre="Café Latte">
+        html2 += ` 
                 <div class="cafe-order-item-info">
                   <span class="cafe-order-item-name">${item.nombre}</span>
                 </div>
@@ -186,21 +190,54 @@ function PedidosLista() {
                   <span class="cafe-order-subtotal ms-2">Q${item.total}</span>
                   <button class="btn cafe-btn-eliminar ms-2" data-accion="eliminar" data-id="${item.id}">Eliminar</i></button>
                 </div>
-              </li>  `
+               `
 
     })
     listaPedido.innerHTML = html2
 }
+
+function total() {
+    Subtotal = 0
+    ObjetosPedidos.map(item => Subtotal = Subtotal + item.total)
+
+    totalSubtotal.textContent = ` Q ${Subtotal}`
+    let Impuesto = Subtotal * 0.05
+    let finalTotal = Impuesto + Subtotal
+    textoDeTotal.textContent = ` total Q ${finalTotal}`
+    textoInpuesto.textContent = ` Impuesto Q ${Impuesto}`
+
+    totalImpuesto.textContent = `Q ${Impuesto}`
+
+
+    totalFinal.textContent = `Q ${finalTotal}`
+    let html3 = ''
+    html3 = ''
+    ObjetosPedidos.forEach(item => {
+        html3 += `<p class="mt-3 cafe-text-muted" > ${item.nombre}   X${item.cantida} = Q ${item.total}</p>`
+
+    })
+    resivo.innerHTML = html3
+
+}
+function quitarTildes(texto) {
+    return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
 let menuFiltro = prodoctos
 menu()
 let botonpedir = document.querySelectorAll(".boton-pedir")
 
+
+
 //////eventos////////////////////////////////////////
 inputBuncador.addEventListener("keyup", (event) => {
-    let nombre = event.target.value.toLowerCase();
+
+    let nombre = quitarTildes(event.target.value.toLowerCase());
+
     menuFiltro = prodoctos.filter(item =>
-        item.nombre.toLowerCase().includes(nombre)
+        quitarTildes(item.nombre.toLowerCase()).includes(nombre)
     );
+
     menu(menuFiltro);
 
 });
@@ -209,90 +246,119 @@ botonMenu.forEach(btn => {
     btn.addEventListener("click", (event) => {
         if (event.target.textContent == "Todas") {
             menuFiltro = prodoctos
-            menu(menuFiltro)
 
         } else if (event.target.textContent == "Bebidas calientes") {
             menuFiltro = prodoctos.filter(item => item.categoria == "Bebida caliente")
-            menu(menuFiltro)
-
         } else if (event.target.textContent == "Bebidas frías") {
             menuFiltro = prodoctos.filter(item => item.categoria == "Bebida fría")
-            menu(menuFiltro)
-
 
         } else if (event.target.textContent == "Postres") {
             menuFiltro = prodoctos.filter(item => item.categoria == "Postre")
-            menu(menuFiltro)
+
 
 
         } else if (event.target.textContent == "Comida") {
             menuFiltro = prodoctos.filter(item => item.categoria == "Comida")
-            menu(menuFiltro)
-
-
         }
-
+        menu(menuFiltro)
     })
 
 }
-
 )
 
 
 gridProductos.addEventListener("click", (event) => {
 
-    if (!event.target.classList.contains("boton-pedir")) return;
+    pedidoVacio.classList.add("d-none")
+    pediGracias.classList.add("d-none")
+    listaPedido.classList.remove("d-none")
 
     let id = Number(event.target.dataset.id);
 
     let producto = prodoctos.find(item => item.id == id);
 
-    console.log("ID:", id);
-
-
-    let pedidoTemporal = new Pedidos(
-        producto.nombre,
-        producto.precio,
-        producto.id
+    let pedidoExistente = ObjetosPedidos.find(
+        item => item.id == producto.id
     );
-    ObjetosPedidos.push(pedidoTemporal);
 
-    console.log(ObjetosPedidos);
+    if (!pedidoExistente) {
+
+        let pedidoTemporal = new Pedidos(
+            producto.nombre,
+            producto.precio,
+            producto.id
+        );
+
+        ObjetosPedidos.push(pedidoTemporal);
+
+    }
     PedidosLista()
-    /* 
-        if (!ObjetosPedidos.includes(prodoctos.nombre)) {
-    
-    
-        } else {
-            ObjetosPedidos.push(pedidoTemporal);
-    
-    
-        } */
+    total()
+
+
+
+
+
+
+
 
 });
+
 listaPedido.addEventListener("click", (event) => {
 
     let id = Number(event.target.dataset.id);
 
     let pedido = ObjetosPedidos.find(item => item.id == id);
-
-
-
     if (event.target.dataset.accion == "sumar") {
         pedido.sumarProductos();
-    }
 
+    }
     else if (event.target.dataset.accion == "restar") {
         pedido.restarProductos();
+
     } else if (event.target.dataset.accion == "eliminar") {
         ObjetosPedidos = ObjetosPedidos.filter(
             item => item.id !== id
 
+
         )
-        console.log("mi mama me mima")
+        if (ObjetosPedidos.length == 0) {
+            listaPedido.classList.add("d-none")
+            pedidoVacio.classList.remove("d-none")
+
+            console.log('el pepe')
+
+        }
+
     }
-
-
-    console.log(pedido);
     PedidosLista()
+    total()
+
+
+
 });
+
+botonFinalisar.addEventListener("click", (event) => {
+    if (ObjetosPedidos.length > 0) {
+        pediGracias.classList.remove("d-none")
+        ObjetosPedidos = []
+
+        listaPedido.classList.add("d-none")
+    }
+})
+
+
+
+
+botonVaciar.addEventListener("click", () => {
+    if (pediGracias.classList.contains('d-none')) {
+
+
+        pedidoVacio.classList.remove("d-none")
+        listaPedido.classList.add("d-none")
+        ObjetosPedidos = []
+
+    }
+})
+
+
