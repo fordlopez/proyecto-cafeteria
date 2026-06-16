@@ -44,15 +44,12 @@ class Pedidos {
             this.total -= this.#precio;
         }
     }
-    sumaTotal() {
-        this.total = this.total + this.total
-
-    }
+   
 
 
 }
 
-class PodoctosCafétia {
+class ProductosCafeteria{
     #id;
     #imagen;
     #nombre;
@@ -84,25 +81,25 @@ class PodoctosCafétia {
         return this.#nombre
     }
     set nombre(value) {
-        this.#nombre
+        this.#nombre=value
     }
     get precio() {
         return this.#precio
     }
     set precio(value) {
-        this.#precio
+        this.#precio=value
     }
     get categoria() {
         return this.#categoria
     }
     set categoria(value) {
-        this.#categoria
+        this.#categoria=value
     }
     get descripcion() {
         return this.#descripcion
     }
     set descripcion(value) {
-        this.#descripcion
+        this.#descripcion=value
     }
 }
 ///////variables//////////////////////////////////////////////////////////////////////////////////
@@ -131,14 +128,14 @@ let botonVaciar = document.querySelector("#btnVaciar")
 
 ///////   const de lista de menu
 
-let prodocto1 = new PodoctosCafétia(1, "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80", "Café Americano", 12.00, "Bebida caliente", "Café Americano",)
-let prodocto2 = new PodoctosCafétia(2, "https://images.unsplash.com/photo-1561047029-3000c68339ca?w=400&q=80", "Café Latte", 18.00, "Bebida caliente", "Café con leche espumada, suave y cremoso.")
-let prodocto3 = new PodoctosCafétia(3, "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&q=80", "Frappe de Chocolate", 25.00, "Bebida fría", "Bebida fría con chocolate y crema batida.")
-let prodocto4 = new PodoctosCafétia(4, "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400&q=80", "Smoothie de Fresa", 22.00, "Bebida fría", "Batido natural de fresa, sin azúcar añadida.")
-let prodocto5 = new PodoctosCafétia(5, "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=400&q=80", "Muffin de Vainilla", 15.00, "Postre", "Pan dulce suave de vainilla")
-let prodocto6 = new PodoctosCafétia(6, "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&q=80", "Cheesecake", 28.00, "Postre", "Pastel de queso cremoso con base de galleta.")
-let prodocto7 = new PodoctosCafétia(7, "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80", "Sandwich de Pollo", 32.00, "Comida", "Pan artesanal con pavo ahumado y vegetales.")
-let prodocto8 = new PodoctosCafétia(8, "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80", "Bowl de Granola", 20.00, "Comida", "Granola artesanal con frutas frescas y miel.")
+let prodocto1 = new ProductosCafeteria(1, "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80", "Café Americano", 12.00, "Bebida caliente", "Café Americano",)
+let prodocto2 = new ProductosCafeteria(2, "https://images.unsplash.com/photo-1561047029-3000c68339ca?w=400&q=80", "Café Latte", 18.00, "Bebida caliente", "Café con leche espumada, suave y cremoso.")
+let prodocto3 = new ProductosCafeteria(3, "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400&q=80", "Frappe de Chocolate", 25.00, "Bebida fría", "Bebida fría con chocolate y crema batida.")
+let prodocto4 = new ProductosCafeteria(4, "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400&q=80", "Smoothie de Fresa", 22.00, "Bebida fría", "Batido natural de fresa, sin azúcar añadida.")
+let prodocto5 = new ProductosCafeteria(5, "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?w=400&q=80", "Muffin de Vainilla", 15.00, "Postre", "Pan dulce suave de vainilla")
+let prodocto6 = new ProductosCafeteria(6, "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&q=80", "Cheesecake", 28.00, "Postre", "Pastel de queso cremoso con base de galleta.")
+let prodocto7 = new ProductosCafeteria(7, "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&q=80", "Sandwich de Pollo", 32.00, "Comida", "Pan artesanal con pavo ahumado y vegetales.")
+let prodocto8 = new ProductosCafeteria(8, "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80", "Bowl de Granola", 20.00, "Comida", "Granola artesanal con frutas frescas y miel.")
 
 const prodoctos = [prodocto1, prodocto2, prodocto3, prodocto4, prodocto5, prodocto6, prodocto7, prodocto8]
 let html = ""
@@ -213,7 +210,7 @@ function total() {
     let html3 = ''
     html3 = ''
     ObjetosPedidos.forEach(item => {
-        html3 += `<p class="mt-3 cafe-text-muted" > ${item.nombre}   X${item.cantida} = Q ${item.total}</p>`
+        html3 += `<p class="mt-3 cafe-text-muted" > ${item.nombre}       :${item.cantida} = Q ${item.total}</p>`
 
     })
     resivo.innerHTML = html3
@@ -226,8 +223,6 @@ function quitarTildes(texto) {
 let menuFiltro = prodoctos
 menu()
 let botonpedir = document.querySelectorAll(".boton-pedir")
-
-
 
 //////eventos////////////////////////////////////////
 inputBuncador.addEventListener("keyup", (event) => {
@@ -254,7 +249,6 @@ botonMenu.forEach(btn => {
 
         } else if (event.target.textContent == "Postres") {
             menuFiltro = prodoctos.filter(item => item.categoria == "Postre")
-
 
 
         } else if (event.target.textContent == "Comida") {
@@ -320,7 +314,6 @@ listaPedido.addEventListener("click", (event) => {
         ObjetosPedidos = ObjetosPedidos.filter(
             item => item.id !== id
 
-
         )
         if (ObjetosPedidos.length == 0) {
             listaPedido.classList.add("d-none")
@@ -353,6 +346,10 @@ botonFinalisar.addEventListener("click", (event) => {
 botonVaciar.addEventListener("click", () => {
     if (pediGracias.classList.contains('d-none')) {
 
+    totalSubtotal.textContent = "Q 0.00"
+    totalImpuesto.textContent ="Q 0.00"
+
+    totalFinal.textContent = "Q 0.00"
 
         pedidoVacio.classList.remove("d-none")
         listaPedido.classList.add("d-none")

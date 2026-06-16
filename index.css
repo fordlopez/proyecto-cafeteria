@@ -39,3 +39,13 @@ button {
 #botonesFinalisar {
     font-size: 1rem;
 }
+
+.cafe-product-card{
+    height: 100%;
+}
+
+.cafe-product-img{
+    width: 400px;
+    height: 480px;
+    object-fit: cover;
+}
